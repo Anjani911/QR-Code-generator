@@ -2,8 +2,9 @@ from flask import Flask, render_template, request, send_file
 import qrcode
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
+# Ensure the static folder exists
 if not os.path.exists('static'):
     os.makedirs('static')
 
@@ -13,9 +14,12 @@ def index():
 
 @app.route('/generate', methods=['POST'])
 def generate_qr():
+    # Get QR type from the form
     qr_type = request.form.get('qr_type')
+    if not qr_type:
+        return "No QR type selected", 400
 
- 
+    # Determine QR data based on the type
     if qr_type == 'upi':
         payee = request.form['payee']
         name = request.form['name']
@@ -37,17 +41,23 @@ def generate_qr():
         image = request.files['image']
         image_path = os.path.join('static', image.filename)
         image.save(image_path)
-        qr_data = f"Image saved as {image.filename}"  # Placeholder, as QR for images is not typical
+        qr_data = f"Image saved as {image.filename}"
 
     else:
         return "Invalid QR type", 400
 
-    # Generate QR code
+    # Generate and save the QR code
     img = qrcode.make(qr_data)
-    qr_path = os.path.join('static', 'qr.png')
-    img.save(qr_path)
+    qr_path = os.path.join(app.static_folder, 'qr.png')
 
-    return render_template('index.html', qr_path=qr_path)
+    try:
+        img.save(qr_path)
+        print(f"QR code saved at: {qr_path}")
+    except Exception as e:
+        print(f"Error saving QR code: {e}")
+        return "Error generating QR code", 500
+
+    return render_template('index.html', qr_path=f'/static/qr.png')
 
 if __name__ == '__main__':
     app.run(debug=True)
