@@ -1,11 +1,11 @@
 /* General Styling */
 body {
     font-family: 'Minecraftia', sans-serif;
-    background-color: #3b3b3b;
-    color: #dcdcdc;
+    background-color: #2e2e2e;
+    color: #e0d8b0;
     margin: 0;
     padding: 20px;
-    background-image: url("https://www.minecraft.net/content/dam/games/minecraft/key-art/Marketplace_Home_Keyart.jpg");
+    background-image: url("https://i.imgur.com/Tx2lH6u.png");
     background-size: cover;
 }
 
@@ -16,23 +16,23 @@ header, div, form {
 
 /* Heading */
 h2 {
-    color: #55ff55;
+    color: #daa520;
     margin-bottom: 10px;
     text-shadow: 2px 2px #000;
 }
 
 h4 {
-    color: #aaaaaa;
+    color: #dcdcdc;
     margin-bottom: 5px;
     text-shadow: 1px 1px #000;
 }
 
 /* Buttons */
 button {
-    background-color: #55ff55;
-    color: #3b3b3b;
+    background-color: #8b5a2b;
+    color: #f4f4f4;
     border: 2px solid #3b3b3b;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 10px 15px;
     margin: 5px;
     cursor: pointer;
@@ -41,7 +41,7 @@ button {
 }
 
 button:hover {
-    background-color: #228b22;
+    background-color: #a0522d;
 }
 
 /* Input Fields */
@@ -51,22 +51,22 @@ input[type="text"], input[type="number"], input[type="file"], select, textarea {
     margin: 5px 0;
     border: 2px solid #555;
     border-radius: 3px;
-    background-color: #dcdcdc;
+    background-color: #e0d8b0;
     font-family: 'Minecraftia', sans-serif;
 }
 
 input[type="submit"] {
-    background-color: #228b22;
+    background-color: #556b2f;
     color: #ffffff;
     padding: 10px 20px;
     margin: 5px;
     border: 2px solid #3b3b3b;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #55ff55;
+    background-color: #6b8e23;
 }
 
 /* QR Display */
@@ -79,7 +79,7 @@ img {
 
 a {
     text-decoration: none;
-    color: #55ff55;
+    color: #daa520;
     font-family: 'Minecraftia', sans-serif;
 }
 
@@ -94,24 +94,29 @@ textarea {
     padding: 8px;
     border: 2px solid #555;
     border-radius: 3px;
-    background-color: #dcdcdc;
+    background-color: #e0d8b0;
     font-family: 'Minecraftia', sans-serif;
 }
 
 label {
     font-weight: bold;
-    color: #55ff55;
+    color: #daa520;
 }
 
+/* Stone-like Divs */
 div {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #4b4b4b;
+    background-image: url("https://i.imgur.com/kkQ52jY.png");
+    background-size: cover;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #363232;
+    background-image: url("https://i.imgur.com/5zkhwR7.png");
+    background-size: cover;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
