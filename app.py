@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 import qrcode
 import os
+from docx import Document
 
 app = Flask(__name__, static_folder='static')
 
@@ -39,6 +40,12 @@ def generate_qr():
 
     elif qr_type == 'image':
         image = request.files['image']
+        image_path = os.path.join('static', image.filename)
+        image.save(image_path)
+        qr_data = f"Image saved as {image.filename}"
+    
+    elif qr_type == 'document':
+        Document = request.files['document']
         image_path = os.path.join('static', image.filename)
         image.save(image_path)
         qr_data = f"Image saved as {image.filename}"
