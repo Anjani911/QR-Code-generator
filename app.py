@@ -44,11 +44,26 @@ def generate_qr():
         image.save(image_path)
         qr_data = f"Image saved as {image.filename}"
     
-    elif qr_type == 'document':
-        Document = request.files['document']
-        image_path = os.path.join('static', image.filename)
-        image.save(image_path)
-        qr_data = f"Image saved as {image.filename}"
+    elif qr_type == 'docx':
+        try:
+            doc_file = request.files['docfile']
+            if doc_file.filename.endswith('.docx'):
+                # Save the uploaded document
+                doc_path = os.path.join('static', doc_file.filename)
+                doc_file.save(doc_path)
+
+                # Read the document content
+                doc = Document(doc_path)
+                doc_text = "\n".join([para.text for para in doc.paragraphs])
+                
+                if not doc_text:
+                    return "The document is empty.", 400
+
+                qr_data = doc_text
+            else:
+                return "Invalid file format. Please upload a .docx file.", 400
+        except Exception as e:
+            return f"Error processing the document: {str(e)}", 500
 
     else:
         return "Invalid QR type", 400
